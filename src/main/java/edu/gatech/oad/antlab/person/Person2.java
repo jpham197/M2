@@ -1,9 +1,11 @@
+
 package edu.gatech.oad.antlab.person;
+import java.util.ArrayList;
 
 /**
  *  A simple class for person 2
  *  returns their name and a
- *  modified string 
+ *  modified string
  *
  * @author Bob
  * @version 1.1
@@ -17,7 +19,7 @@ public class Person2 {
 	 * @param pname the person's real name
 	 */
 	 public Person2(String pname) {
-	   name = pname;
+	   this.name = pname;
 	 }
 	/**
 	 * This method should take the string
@@ -31,17 +33,29 @@ public class Person2 {
 	 */
 	private String calc(String input) {
 	  //Person 2 put your implementation here
-	  return null;
+		String randomOrder;
+    String[] ary = input.split("");
+		List<String> array = new ArrayList<String>(Arrays.asList(ary));
+		for (int i = 0; i < array.length; i++) {
+			int random = Math.random(1 * (array.size()));
+			char subChar = array[random];
+			array.remove(random);
+			randomOrder += subChar;
+		}
+	  return randomOrder;
 	}
 	/**
 	 * Return a string rep of this object
 	 * that varies with an input string
 	 *
 	 * @param input the varying string
-	 * @return the string representing the 
+	 * @return the string representing the
 	 *         object
 	 */
 	public String toString(String input) {
 	  return name + calc(input);
 	}
+  public static void main (String[]args) {
+    System.out.println(calc(hang132));
+  }
 }
